@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact — Shofuku</title>
   <link rel="stylesheet" href="../CSS/base.css" />
   <link rel="stylesheet" href="../CSS/contact.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
-	
 <body>
 
   <nav>
@@ -23,7 +23,6 @@
   </nav>
 
   <main class="page-main">
-    
     <div>
       <h1 class="headline">We're Always Looking to Improve.</h1>
       <div class="section-divider"></div>
@@ -35,31 +34,30 @@
 
     <div class="card">
       <h2>Contact Form</h2>
-
-      <div>
-        <label for="feedback-email">Email Address</label>
-        <input type="email" id="feedback-email" placeholder="Enter your email" />
-      </div>
-
-      <div>
-        <label>How would you rate our service overall?</label>
-        <div class="rating-row">
-          <button class="rating-btn" type="button" title="Very bad">😞</button>
-          <button class="rating-btn" type="button" title="Bad">🙁</button>
-          <button class="rating-btn" type="button" title="Neutral">😐</button>
-          <button class="rating-btn" type="button" title="Good">🙂</button>
-          <button class="rating-btn" type="button" title="Great">😄</button>
+      <form id="contact-form">
+        <div>
+          <label for="feedback-email">Email Address</label>
+          <input type="email" id="feedback-email" placeholder="Enter your email" required/>
         </div>
-      </div>
 
-      <div>
-        <label for="feedback-reason">Please share the reason for your rating.</label>
-        <input type="text" id="feedback-reason" placeholder="Tell us more…" />
-      </div>
+        <div>
+          <label>How would you rate our service overall?</label>
+          <div class="rating-row" id="ratingContainer"> 
+            <button class="rating-btn" type="button" title="Very bad" data-rating="Very bad">😞</button>
+            <button class="rating-btn" type="button" title="Bad" data-rating="Bad">🙁</button>
+            <button class="rating-btn" type="button" title="Neutral" data-rating="Neutral">😐</button>
+            <button class="rating-btn" type="button" title="Good" data-rating="Good">🙂</button>
+            <button class="rating-btn" type="button" title="Great" data-rating="Great">😄</button>
+          </div>
+        </div>
 
-      <button class="btn-primary" type="button">Submit Feedback</button>
-    </div>
-    
+        <div>
+          <label for="feedback-reason">Please share the reason for your rating.</label>
+          <input type="text" id="feedback-reason" placeholder="Tell us more…" required/>
+        </div>
+
+        <button class="btn-primary" type="submit">Submit Feedback</button> 
+      </form> </div> 
   </main>
 
   <footer>
@@ -80,9 +78,46 @@
       <p><a href="mailto:shofuku.ph@gmail.com">shofuku.ph@gmail.com</a></p>
       <p>+63 994 931 0523</p>
     </div>
-		
   </footer>
 
+  <script>
+    const contactForm = document.getElementById('contact-form');
+    const ratingContainer = document.getElementById('ratingContainer'); 
+    let selectedRating = "";
+
+    // Handle emoji selection
+    ratingContainer.addEventListener('click', function(event) {
+      if (event.target.classList.contains('rating-btn')) {
+        const allButtons = ratingContainer.querySelectorAll('.rating-btn');
+        for (let i = 0; i < allButtons.length; i++) {
+          allButtons[i].style.backgroundColor = ''; // Reset style
+        }
+        
+        event.target.style.backgroundColor = 'var(--gold)'; 
+        selectedRating = event.target.getAttribute('data-rating');
+      }
+    });
+
+    // Handle Form Submission smoothly
+    contactForm.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      if (!selectedRating) {
+        window.alert("Please pick an emoji rating before submitting!");
+        return;
+      }
+
+      window.alert("Thank you for your feedback! 😀");
+      
+      // Reset form fields and rating selection
+      contactForm.reset();
+      selectedRating = "";
+      const allButtons = ratingContainer.querySelectorAll('.rating-btn');
+      for (let i = 0; i < allButtons.length; i++) {
+        allButtons[i].style.backgroundColor = '';
+      }
+    });
+  </script>
+
 </body>
-	
 </html>
