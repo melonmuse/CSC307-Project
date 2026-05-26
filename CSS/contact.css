@@ -1,0 +1,23 @@
+.rating-row {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.2rem;
+}
+
+.rating-btn {
+  flex: 1;
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.65rem 0;
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: background var(--transition), border-color var(--transition);
+  text-align: center;
+}
+
+.rating-btn:hover,
+.rating-btn.selected {
+  background: var(--gold-light);
+  border-color: var(--gold);
+}

@@ -1,0 +1,49 @@
+.about-hero {
+  background-color: var(--crimson-deep);
+  padding: 6rem 4rem;
+  text-align: center;
+  border-bottom: 1px solid rgba(201, 180, 138, 0.15);
+}
+
+.about-hero h1 {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--white);
+  margin-bottom: 1rem;
+}
+
+.about-hero p {
+  max-width: 520px;
+  margin: 0 auto;
+  font-size: 1.05rem;
+  color: var(--cream);
+  opacity: 0.85;
+  line-height: 1.8;
+}
+
+.about-body {
+  flex: 1;
+  padding: 5rem 4rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: start;
+}
+
+.about-body h2 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1.2rem;
+  color: var(--gold-light);
+}
+
+.about-body p {
+  font-size: 1rem;
+  color: var(--cream);
+  line-height: 1.85;
+  margin-bottom: 1rem;
+}
