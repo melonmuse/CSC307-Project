@@ -62,6 +62,12 @@
             </div>
           </div>
         </div>
+        <div class="totalBill">
+          <h3>Bill Summary</h3>
+          <p>Subtotal: ₱<span id="subTotal">0</span></p>
+          <p>Total: ₱<span id="Total">0</span></p>
+        </div>
+          
 
         <div>
           <label for="delivery">Delivery Address &amp; Special Requests</label>
@@ -169,6 +175,34 @@
       orderForm.reset();
       window.alert("Thank you for your order! 😀");
     });
+
+    // Calculating The Total Bill
+    function getItemPrice(item){
+      const prices = {
+        Gyoza: 120,
+        Gyudon: 180,
+        Katsudon: 190,
+        Okonomiyaki: 220,
+        Tonkatsu: 210};
+
+      let total = 0;
+
+      const rows = document.querySelectorAll('.item-row');
+
+      for ( let i = 0; i < rows.length; i++){
+        let row = row [i];
+        const item = row.querySelector('.itemSelector').value;
+        const quantity = Number(row.querySelector('.quantitySelect').value);
+
+        if(item && quantity){
+          total += prices[item]*quantity;
+        }
+      }
+
+      return total;
+
+      document.getElementById("total").textContent = calculateBill();
+      
   </script>
 </body>
 </html>
