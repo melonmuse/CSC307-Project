@@ -33,19 +33,16 @@
   table-layout: fixed;      
 }
 
-/* All cells */
 .gallery-table td {
   padding: 4px;
   height: 500px;
   vertical-align: top;
 }
 
-/* Cells that span both columns */
 .gallery-table td.wide {
   padding: 4px;
 }
 
-/* Image wrapper inside each cell */
 .gallery-cell {
   position: relative;
   overflow: hidden;
